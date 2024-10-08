@@ -10,6 +10,7 @@ const todoLists = document.getElementById("lists");
 const createTodo = (todoId, todoValue) => {
   const todoElement = document.createElement("li");
   todoElement.id = todoId;
+  todoElement.classList.add("li-style");
   todoElement.innerHTML = ` <span> ${todoValue} </span> 
   <span> <button class="btn" id="deleteButton"> <i class="fa fa-trash"></i> </button> </span>
   `;
