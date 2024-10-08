@@ -5,6 +5,17 @@ const todoForm = document.querySelector(".todo-form");
 const todoInput = document.querySelector("#inputTodo");
 const todoAddButton = document.querySelector("#addTodoButton");
 const todoLists = document.getElementById("lists");
+const messageElement = document.getElementById("message");
+
+// here create function for showMessage() -this function show message for creating and deleting element
+const showMessage = (text, status) => {
+  messageElement.textContent = text;
+  messageElement.classList.add(`bg-${status}`);
+  setTimeout(() => {
+    messageElement.textContent = "";
+    messageElement.classList.remove(`bg-${status}`);
+  }, 1000);
+};
 
 // create Todo function
 const createTodo = (todoId, todoValue) => {
@@ -26,6 +37,9 @@ const addTodo = (event) => {
   // generate Unique id
   const todoId = Date.now().toString();
   createTodo(todoId, todoValue);
+
+  // here call show message function
+  showMessage("Todo is added", "success");
 };
 
 //Here Adding listeners
