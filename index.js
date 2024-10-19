@@ -28,6 +28,13 @@ const createTodo = (todoId, todoValue) => {
   todoLists.appendChild(todoElement);
 };
 
+//getTodosFromLocalStorage function
+const getTodosFromLocalStorage = () => {
+  return localStorage.getItem("mytodos")
+    ? JSON.parse(localStorage.getItem("mytodos"))
+    : [];
+};
+
 // addTodo function
 const addTodo = (event) => {
   event.preventDefault();
@@ -37,9 +44,15 @@ const addTodo = (event) => {
   // generate Unique id
   const todoId = Date.now().toString();
   createTodo(todoId, todoValue);
-
   // here call show message function
   showMessage("Todo is added", "success");
+
+  //Adding todo to local Storage
+  const todos = getTodosFromLocalStorage();
+  todos.push({ todoId, todoValue });
+  localStorage.setItem("mytodos", JSON.stringify(todos));
+
+  todoInput.value = "";
 };
 
 //Here Adding listeners
