@@ -26,6 +26,22 @@ const createTodo = (todoId, todoValue) => {
   <span> <button class="btn" id="deleteButton"> <i class="fa fa-trash"></i> </button> </span>
   `;
   todoLists.appendChild(todoElement);
+
+  const deleteButton = todoElement.querySelector("#deleteButton");
+  deleteButton.addEventListener("click", deleteTodo);
+};
+
+//deleteTodo function
+const deleteTodo = (event) => {
+  const selectedTodo = event.target.parentElement.parentElement;
+  // console.log(selectedTodo);
+
+  todoLists.removeChild(selectedTodo);
+  showMessage("todo is Deleted", "danger");
+
+  let todos = getTodosFromLocalStorage();
+  todos =  todos.filter((todo) => todo.todoId !==  selectedTodo.id);
+  localStorage.setItem("mytodos", JSON.stringify(todos));
 };
 
 //getTodosFromLocalStorage function
