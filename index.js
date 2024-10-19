@@ -40,7 +40,7 @@ const deleteTodo = (event) => {
   showMessage("todo is Deleted", "danger");
 
   let todos = getTodosFromLocalStorage();
-  todos =  todos.filter((todo) => todo.todoId !==  selectedTodo.id);
+  todos = todos.filter((todo) => todo.todoId !== selectedTodo.id);
   localStorage.setItem("mytodos", JSON.stringify(todos));
 };
 
@@ -71,5 +71,13 @@ const addTodo = (event) => {
   todoInput.value = "";
 };
 
+// loadTodos function
+const loadTodos = () => {
+  const todos = getTodosFromLocalStorage();
+  todos.map((todo) => createTodo(todo.todoId, todo.todoValue))
+};
+
 //Here Adding listeners
 todoForm.addEventListener("submit", addTodo);
+//
+window.addEventListener("DOMContentLoaded", loadTodos);
