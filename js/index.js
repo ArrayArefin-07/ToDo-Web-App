@@ -78,7 +78,7 @@ const addTodo = (event) => {
 // loadTodos function
 const loadTodos = () => {
   const todos = getTodosFromLocalStorage();
-  todos.map((todo) => createTodo(todo))
+  todos.map((todo) => createTodo(todo));
 };
 
 //Here Adding listeners

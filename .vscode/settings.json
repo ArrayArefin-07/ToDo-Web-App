@@ -1,4 +1,6 @@
 {
   "workbench.colorTheme": "Abyss",
-  "workbench.preferredDarkColorTheme": "Default Dark Modern"
+  "workbench.preferredDarkColorTheme": "Default Dark Modern",
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  
 }
